@@ -8,8 +8,6 @@ class User_Login(BaseModel):
     name: str 
     username: str #Email
     password: str 
-
-class profile(BaseModel):
     courses: str 
     
 
@@ -19,7 +17,3 @@ class profile(BaseModel):
 
 
 app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"Hello" : "World"}
