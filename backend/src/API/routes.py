@@ -1,21 +1,51 @@
 from fastapi import FastAPI,APIRouter
-import supabase
-from backend.app import User_Login
+from supabase import create_client, Client
+from pydantic import BaseModel
+# from app import User_Login
+import os
+from dotenv import load_dotenv
 
-app = FastAPI()
+load_dotenv()
 
-app.post("/login")
-def login():
+url = os.getenv('SUPABASE_URL')
+key = os.getenv('SUPABASE_KEY')
+
+class User_Login(BaseModel):
+    name: str 
+    username: str #Email
+    password: str 
+    courses: str 
+
+supabase = create_client(url, key)
+
+router = APIRouter()
+
+@router.get("/test")
+def test():
+    return {"message": "Test endpoint working!"}
+
+@router.post("/login")
+def login(profile:User_Login):
     response = supabase.auth.sign_in_with_password(
-    {"email": "email@example.com", "password": "example-password"}
+    {"username": profile.username, "password": profile.password}
 )
 
-app.post("/createaccount")
+@router.post("/createaccount")
 def create_account(profile:User_Login):
-    response = supabase.table("students").insert({"name":profile.name, "email": profile.email, "courses": profile.courses}).execute()
+    print("created account")
+    response = supabase.table("students").insert({"name":profile.name, "username": profile.username, "courses": profile.courses}).execute()
+    return response
 
-
-
+@router.post("/coursesearch")
+def course_search(courses:str):
+    userids = supabase.table("students").select("user_id").is_("courses", courses).execute()
+    profile_info= []
+    for id in userids.data:
+        user = id["user_id"]
+        response = supabase.table("students").select("name","username", "courses").eq("user_id",user).execute()
+        if response.data:
+            profile_info.extend(response.data)
+    return profile_info
 
 
 
