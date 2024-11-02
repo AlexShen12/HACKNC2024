@@ -5,6 +5,7 @@ import './index.css'
 import App from './App'
 import Login from './routes/login/Login'
 import Courses from './routes/courses/course'
+import Profile, { profileLoader } from './routes/profile/profile'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
   {
     path: "course-search",
     element: (<Courses />)
+  },
+  {
+    path: "profile/:id",
+    element: (<Profile />),
+    loader: profileLoader
   }
 ])
 
