@@ -7,6 +7,9 @@ from pydantic import BaseModel
 
 # internal
 from src.globals import Environment
+from src.API.routes import router
+
+app = FastAPI()
 
 
 class User_Login(BaseModel):
@@ -22,3 +25,5 @@ async def lifespan(app: FastAPI):
     yield
 
 app: FastAPI = FastAPI(lifespan=lifespan)
+
+app.include_router(router)
