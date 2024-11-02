@@ -2,8 +2,9 @@
 name = "hacknc2024"
 version = "0.1.0"
 description = ""
-authors = ["Alan Liu <liualan998@gmail.com>"]
+authors = ["Alan Liu <liualan998@gmail.com>", "Alex Shen <ashen006@gmail.com>"]
 readme = "README.md"
+
 
 [tool.poetry.dependencies]
 python = "^3.13"
