@@ -5,6 +5,20 @@
   text-align: center;
 }
 
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  overflow: hidden;
+}
+
+.animation{
+  position: relative;
+  animation: 
+  
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

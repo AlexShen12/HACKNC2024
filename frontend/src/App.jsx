@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { useLoaderData } from 'react-router-dom'
+import { Outlet } from "react-router-dom"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,8 +11,10 @@ function App() {
   return (
     <>
       <div>{data}</div>
-      <h1>Vite + React</h1>
-      <div className="card">
+
+      <h1>HeelStudy</h1>
+      <h2>Find those with similar passion idk</h2>
+      <div className="card logo">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
