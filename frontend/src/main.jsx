@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App'
-import Login from './routes/login/Login'
-import Courses from './routes/courses/course'
+import Login from './routes/account/login'
+import Signup from './routes/account/signup'
+import Courses, { courseLoader } from './routes/courses/course'
 import Profile, { profileLoader } from './routes/profile/profile'
+import EditProfile, { editProfileLoader } from './routes/profile/editProfile'
+import CoursePage, { coursePageLoader } from './routes/courses/courseStudents'
 
 const router = createBrowserRouter([
   {
@@ -18,18 +21,34 @@ const router = createBrowserRouter([
     element: (<div>test</div>)
   },
   {
+    path: "signup",
+    element: (<Signup />)
+  },
+  {
     path: "login",
     element: (<Login />)
   },
   {
-    path: "course-search",
-    element: (<Courses />)
+    path: "courses/search",
+    element: (<Courses />),
+    loader: courseLoader
+  },
+  {
+    path: "courses/:id",
+    element: (<CoursePage />),
+    loader: coursePageLoader
   },
   {
     path: "profile/:id",
     element: (<Profile />),
-    loader: profileLoader
+    loader: profileLoader,
+  },
+  {
+    path: "profile/edit/:id",
+    element: (<EditProfile />),
+    loader: editProfileLoader
   }
+
 ])
 
 createRoot(document.getElementById('root')).render(

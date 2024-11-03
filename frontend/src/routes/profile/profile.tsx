@@ -1,16 +1,20 @@
 import { Link, useLoaderData } from 'react-router-dom';
+import { CourseData, ProfileData } from '../../types/types';
 
-type ProfileData = {
-    name: string,
-    courses: string[],
-    email: string
-}
 
 // TODO: get profile data from api call
 async function getProfileData(id: number): Promise<ProfileData>{
     const data: ProfileData = {
         name: "test",
-        courses: ["test course 1", "test course 2"],
+        courses: [
+            {
+                courseNumber: "101",
+                courseName: "test course 1"
+            }, 
+            {
+                courseNumber: "102",
+                courseName: "test course 2"
+            }],
         email: "test@unc.edu"
     }
     return await data;
@@ -27,7 +31,7 @@ export default function Profile(){
     const data: ProfileData = useLoaderData() as ProfileData;
 
     const name: string = data.name;
-    const courses: string[] = data.courses;
+    const courses: CourseData[] = data.courses;
     const email: string = data.email;
 
     return(
@@ -36,7 +40,7 @@ export default function Profile(){
             <div>
                 <label>Courses: </label>
                 <ul>
-                {courses.map((course: string) => (<li key={course}>{course}</li>))}
+                {courses.map((course: CourseData) => (<li key={course.courseNumber}>{course.courseName}</li>))}
                 </ul>
             </div>
             <p>Contact Info:</p>

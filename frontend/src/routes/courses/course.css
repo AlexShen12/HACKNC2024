@@ -1,0 +1,20 @@
+.searchbutton {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 90px;
+    height: 40px;
+    display: flex;
+    font-size: 30;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/*maybe put the search text inside the button? would have to make a long elipises but not sure */
+.searchbutton:hover {
+    background-color: rgb(57, 57, 57);
+}
+/* can also use for a back button or the other buttons on the screen to navigate back to course search from editprofile*/
+/* maybe make it a darker color (than azure) when you hover? */
+

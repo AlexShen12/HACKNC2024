@@ -12,7 +12,27 @@ class SupabaseClient():
 
     def __init__(self, project_url: str, api_key: str):
         self.supabase_client = create_client(project_url, api_key)
+
+    def signup(self, email: str, password: str):
+        response = self.supabase_client.auth.sign_up({
+            "email": email,
+            "password": password
+        })
+
+        return response
+
+    def login(self, email: str, password: str):
+        response = self.supabase_client.auth.sign_in_with_password({
+            "email": email, 
+            "password": password
+        })
+
+        return response
     
-    def sign_in(self, profile: UserLogin):
-        response = self.supabase_client.auth.sign_in_with_password(
-        {"username": self.supabase_client.username, "password": profile.password})
+    def logout(self):
+        response = self.supabase_client.auth.sign_out()
+        return response
+    
+    def is_authenticated(self):
+        response = self.supabase_client.auth.get_session()
+        return response
