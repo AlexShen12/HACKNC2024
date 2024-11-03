@@ -4,8 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import Login from './routes/login/Login'
-import Courses from './routes/courses/course'
+import Courses, { courseLoader } from './routes/courses/course'
 import Profile, { profileLoader } from './routes/profile/profile'
+import EditProfile, { editProfileLoader } from './routes/profile/editpro'
+import CoursePage, { coursePageLoader } from './routes/courses/courseStudents'
 
 const router = createBrowserRouter([
   {
@@ -22,13 +24,24 @@ const router = createBrowserRouter([
     element: (<Login />)
   },
   {
-    path: "course-search",
-    element: (<Courses />)
+    path: "course/search",
+    element: (<Courses />),
+    loader: courseLoader
+  },
+  {
+    path: "courses/:id",
+    element: (<CoursePage />),
+    loader: coursePageLoader
   },
   {
     path: "profile/:id",
     element: (<Profile />),
-    loader: profileLoader
+    loader: profileLoader,
+  },
+  {
+    path: "profile/edit/:id",
+    element: (<EditProfile />),
+    loader: editProfileLoader
   }
 ])
 
