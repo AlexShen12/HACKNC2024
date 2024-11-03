@@ -15,10 +15,11 @@ class SupabaseClient():
         self.supabase_client = create_client(project_url, api_key)
 
     def signup(self, email: str, password: str):
-        response = self.supabase_client.auth.sign_up({
-            "email": email,
-            "password": password
-        })
+        try:
+            response = self.supabase_client.auth.sign_up({
+                "email": email,
+                "password": password
+            })
 
             return response
         
@@ -26,10 +27,11 @@ class SupabaseClient():
             return {"error": str(e)}
 
     def login(self, email: str, password: str):
-        response = self.supabase_client.auth.sign_in_with_password({
-            "email": email, 
-            "password": password
-        })
+        try:
+            response = self.supabase_client.auth.sign_in_with_password({
+                "email": email, 
+                "password": password
+            })
 
             return response
         
