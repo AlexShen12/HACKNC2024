@@ -3,14 +3,12 @@ from contextlib import asynccontextmanager
 
 # external
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 # internal
 from src.globals import Environment
-from src.API import account_router
+from src.API import account_router, profile_router
 from src.database import SupabaseClient
 
 def initialize_supabase_client(app: FastAPI):
@@ -46,3 +44,4 @@ def login():
 
 
 app.include_router(router=account_router)
+app.include_router(router=profile_router)
