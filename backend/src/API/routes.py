@@ -24,10 +24,7 @@ def test():
 @router.post("/login")
 def login(profile: User_Login, request: Request ):
     supabase: SupabaseClient = request.app.state.supabase_client
-
-    response = supabase.auth.sign_in_with_password(
-    {"username": profile.username, "password": profile.password}
-)
+    supabase.sign_in(profile)
 
 @router.post("/createaccount")
 def create_account(profile: User_Login, request: Request):
