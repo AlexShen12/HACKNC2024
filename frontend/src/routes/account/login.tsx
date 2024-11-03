@@ -35,7 +35,7 @@ export default function Login(){
     }
 
     return (
-        <div>
+        <div className="profilecard">
             <form method='POST' action='/login' onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor='email'>Email: </label>
@@ -56,7 +56,7 @@ export default function Login(){
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>
-                <button type='submit'> Login </button>
+                <button type='submit' className="login-container"> Login </button>
             </form>
         </div>
     );

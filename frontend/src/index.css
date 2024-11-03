@@ -25,8 +25,35 @@ body {
   font-weight: bold;
   color: #fff;
   background-color: #99badd;
-  padding: 20px 40px;
-  
+  padding: 10px 30px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 1.0s ease;
+  max-height: 100px;
+}
+
+.logo:hover{
+  transform: scale(1.1);
+}
+
+.searchbutton {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 90px;
+  height: 40px;
+  display: flex;
+  font-size: 30;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.searchbutton:hover {
+  background-color: rgb(57, 57, 57);
 }
 
 a:hover {

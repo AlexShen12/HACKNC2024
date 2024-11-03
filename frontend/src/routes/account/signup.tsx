@@ -31,8 +31,8 @@ export default function Signup() {
     }
 
     return (
-        <div>
-            <form method='POST' action='/signup' onSubmit={handleSubmit}>
+        <div className='profilecard'>
+            <form method='POST' action='/signup' onSubmit={handleSubmit} >
                 <div>
                     <label htmlFor='email'>Email: </label>
                     <input
