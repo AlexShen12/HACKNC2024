@@ -32,8 +32,8 @@ export default function App() {
 
         {data.auth || (
           <div>
-
-
+            <p>Sign out</p>
+            <p>Profile</p>
           </div>
         )}
 

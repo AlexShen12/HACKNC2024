@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     element: (<Login />)
   },
   {
-    path: "course/search",
+    path: "courses/search",
     element: (<Courses />),
     loader: courseLoader
   },

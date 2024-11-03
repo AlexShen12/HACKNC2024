@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 # internal
 from src.globals import Environment
-from src.API.routes import router
+from src.API import account_router
 from src.database import SupabaseClient
 
 def initialize_supabase_client(app: FastAPI):
@@ -25,4 +25,8 @@ async def lifespan(app: FastAPI):
 
 app: FastAPI = FastAPI(lifespan=lifespan)
 
-app.include_router(router)
+@app.get("/")
+def root():
+    return {"message": "Hello World"}
+
+app.include_router(router=account_router)

@@ -52,6 +52,7 @@ export default function EditProfile() {
                     <input
                         id='name'
                         name='name'
+                        defaultValue={data.profileData.name}
                     />
                 </div>
                 <div>

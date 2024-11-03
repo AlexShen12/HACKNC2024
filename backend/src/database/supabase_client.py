@@ -26,3 +26,11 @@ class SupabaseClient():
         })
 
         return response
+    
+    def logout(self):
+        response = self.supabase_client.auth.sign_out()
+        return response
+    
+    def is_authenticated(self):
+        response = self.supabase_client.auth.get_session()
+        return response

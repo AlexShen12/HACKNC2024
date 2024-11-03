@@ -24,5 +24,7 @@ def login(inputs: LoginInput, request: Request):
 
     response = supabase.login(inputs.email, inputs.password)
 
+    return response
+
     
     
