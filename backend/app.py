@@ -3,6 +3,8 @@ from contextlib import asynccontextmanager
 
 # external
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 # internal
@@ -26,7 +28,8 @@ async def lifespan(app: FastAPI):
 app: FastAPI = FastAPI(lifespan=lifespan)
 
 @app.get("/")
-def root():
-    return {"message": "Hello World"}
+def login():
+    return FileResponse("frontend/src/components/routes/account/login.tsx")
+
 
 app.include_router(router=account_router)

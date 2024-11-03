@@ -4,7 +4,6 @@
 from fastapi import APIRouter, Request
 from supabase import create_client, Client
 from pydantic import BaseModel
-
 # internal
 from src.database import SupabaseClient
 
@@ -24,17 +23,19 @@ def test():
 @router.post("/login")
 def login(profile: User_Login, request: Request ):
     supabase: SupabaseClient = request.app.state.supabase_client
-    supabase.sign_in(profile)
+    supabase.login(profile.username,profile.password)
 
-@router.post("/createaccount")
+
+@router.post("/account")
 def create_account(profile: User_Login, request: Request):
     supabase: SupabaseClient = request.app.state.supabase_client
+    supabase.signup(profile.username, profile.password, profile.name)
 
     print("created account")
     response = supabase.table("students").insert({"name":profile.name, "username": profile.username, "courses": profile.courses}).execute()
     return response
 
-@router.post("/coursesearch")
+@router.post("/courses")
 def course_search(courses: str, request: Request):
     supabase: SupabaseClient = request.app.state.supabase_client
 
@@ -46,6 +47,11 @@ def course_search(courses: str, request: Request):
         if response.data:
             profile_info.extend(response.data)
     return profile_info
+
+@router.get("/profile")
+def profile(request: Request):
+    supabase: SupabaseClient = request.app.state.supabase_client
+    logged_in = supabase.auth.get_user()
 
 
 
