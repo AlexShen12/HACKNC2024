@@ -8,7 +8,8 @@ export type CourseData = {
 export type ProfileData = {
     name: string,
     courses: CourseData[],
-    email: string
+    email: string,
+    isUser: boolean
 }
 
 export type ProfileCourseData = {

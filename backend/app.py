@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 # internal
 from src.globals import Environment
@@ -26,6 +27,18 @@ async def lifespan(app: FastAPI):
     yield
 
 app: FastAPI = FastAPI(lifespan=lifespan)
+
+origins: list[str] = [
+       "http://localhost:5173",  # Replace with your React frontend URL
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def login():

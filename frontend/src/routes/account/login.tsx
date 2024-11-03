@@ -4,7 +4,7 @@ export default function Login(){
 
 
     return (
-        <div>
+        <div className="profilecard">
             <form>
                 <div>
                     <label htmlFor='email'>Email: </label>
@@ -21,7 +21,7 @@ export default function Login(){
                         type='password'
                     />
                 </div>
-                <button type='submit'> Login </button>
+                <button type='submit' className="login-container"> Login </button>
             </form>
         </div>
     );
