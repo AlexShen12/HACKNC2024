@@ -33,7 +33,8 @@ export async function editProfileLoader({params} : {params: {id: number}}): Prom
                     courseNumber: "102",
                     courseName: "test course 2"
                 }],
-            email: "test@unc.edu"
+            email: "test@unc.edu",
+            isUser: true
         }
     }
     return testData;

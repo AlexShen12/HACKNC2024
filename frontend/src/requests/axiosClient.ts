@@ -7,7 +7,7 @@ export class AxiosClient {
     static client: AxiosClient;
 
     static getInstance(): AxiosClient {
-        if(AxiosClient.client === null){
+        if(!AxiosClient.client){
             AxiosClient.client = new AxiosClient()
         }
 
@@ -18,7 +18,7 @@ export class AxiosClient {
 
     private constructor(){
         this.instance = axios.create({
-            baseURL: 'http://localhost:8000/',
+            baseURL: 'http://127.0.0.1:8000/',
             timeout: 5000
         });
     }
@@ -28,8 +28,7 @@ export class AxiosClient {
     }
 
     async post(url: string, data: any, onSuccess: (response: any) => (any), onError: (error: any) => any): Promise<any>{
-        return 
-            this.instance.post(url, data)
+        return this.instance.post(url, data)
             .then(onSuccess)
             .catch(onError);
     }

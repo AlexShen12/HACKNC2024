@@ -22,10 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "signup",
-    element: (<Signup />),
-    action: async ({request}) => {
-      return redirect("/login")
-    }
+    element: (<Signup />)
   },
   {
     path: "login",
