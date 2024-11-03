@@ -9,7 +9,7 @@
     padding: 10px;
     height: 500px;
     width: 400px;
-    text-align: center;
+    text-align: left; /*might break it*/
 }
 /* reuse courselist and addtolist for this section as well */
 
@@ -38,7 +38,9 @@ input[type="text"]:focus {
     padding: 10px;
     height: 300px;
     width: 700px;
-    text-align: center;
+    text-align: left;
+    position: relative;
+    top:-32px;
 }
 
 /*formatting for the edit profile card*/
@@ -46,10 +48,9 @@ input[type="text"]:focus {
 .courselist {
     display: flex;
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
     margin: 0;
     flex-wrap: wrap;
-    justify-content: center;
 
 }
 
@@ -81,11 +82,13 @@ input[type="text"]:focus {
     display: inline-block; /*not sure how to include it at the end of the list */
     color: #000000;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 11px;
     text-align: center;
     cursor: pointer;
+    padding: 10px 20px;
     transition: background-color 0.2s;
     max-width: 100px;
+    max-height: 50px;
 }
 .addtolist:hover{
     background-color: rgb(188, 188, 167);
