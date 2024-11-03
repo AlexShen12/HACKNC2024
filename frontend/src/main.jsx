@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App'
-import Login from './routes/login/Login'
+import Login from './routes/account/login'
+import Signup from './routes/account/signup'
 import Courses, { courseLoader } from './routes/courses/course'
 import Profile, { profileLoader } from './routes/profile/profile'
 import EditProfile, { editProfileLoader } from './routes/profile/editpro'
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "test",
     element: (<div>test</div>)
+  },
+  {
+    path: "signup",
+    element: (<Signup />)
   },
   {
     path: "login",
