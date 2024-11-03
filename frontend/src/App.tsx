@@ -22,18 +22,18 @@ export default function App() {
   return (
     <>
       <nav>
-        <p>HeelStudy</p>
+        <p className='logo'>HeelStudy</p>
         {data.auth && (
           <div>
-            <p>Login</p>
-            <p>Sign in</p>
+            <p className='searchbutton'>Login</p>
+            <p className='searchbutton'>Sign in</p>
           </div>
         )}
 
         {data.auth || (
           <div>
-            <p>Sign out</p>
-            <p>Profile</p>
+            <p className='searchbutton'>Sign out</p>
+            <p className='searchbutton'>Profile</p>
           </div>
         )}
 
