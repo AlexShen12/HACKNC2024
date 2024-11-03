@@ -1,3 +1,73 @@
-.root{
-    
+.searchbutton {
+    background-color: aliceblue;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    font-size: 30;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
+
+/*maybe put the search text inside the button? would have to make a long elipises but not sure */
+.searchbutton:hover {
+    background-color: lightblue;
+}
+/* can also use for a back button or the other buttons on the screen to navigate back to course search from editprofile*/
+
+/* maybe make it a darker color (than azure) when you hover? */
+
+.profilecard {
+    background-color: beige;
+    border-radius: 15px;
+    box-shadow: 2px 1px 10px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    height: 300px;
+    width: 700px;
+    text-align: center;
+}
+
+/*formatting for the profile card*/
+
+.courselist {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.courselist li {
+    background-color: #99badd;
+    color: white;
+    margin: 5px;
+    font-size: 15px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    white-space: nowrap;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+/* things to make the list a row, along with making list components pill shapred*/
+
+.addtolist {
+    padding: 10px 20px;
+    /* Padding for size and shape */
+    border: 2px dotted #000000;
+    border-radius: 50px;
+    margin: 10px;
+    display: flex;
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+/* pill shape for at the end of the list when you want to suggest if you want to add anything or not.
+/* click on an item to remove it from the list ig */
+

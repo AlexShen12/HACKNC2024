@@ -11,7 +11,6 @@ export default function Courses(){
                     />
                     <button type = 'submit'> Search </button>
             </form>
-
         </div>
     )
 

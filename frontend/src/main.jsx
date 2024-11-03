@@ -6,6 +6,7 @@ import App from './App'
 import Login from './routes/login/Login'
 import Courses from './routes/courses/course'
 import Profile, { profileLoader } from './routes/profile/profile'
+import EditProfile from './routes/profile/editpro'
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,12 @@ const router = createBrowserRouter([
     path: "profile/:id",
     element: (<Profile />),
     loader: profileLoader
+  },
+  { 
+    path: "editprofile",
+    element: (<EditProfile />)
   }
+
 ])
 
 createRoot(document.getElementById('root')).render(
