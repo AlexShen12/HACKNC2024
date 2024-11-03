@@ -32,6 +32,7 @@ export default function Courses(){
                 <ul>
                 {courses.map((course: string) => (<li key={course}>{course}</li>))}
                 </ul>
+                
             </div>
         </div>
     );

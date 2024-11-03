@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import Search from '../../components/search';
 import { ProfileCourseData } from '../../types/types';
 
+import './profile.css';
 
 export async function editProfileLoader({params} : {params: {id: number}}): Promise<ProfileCourseData> {
 

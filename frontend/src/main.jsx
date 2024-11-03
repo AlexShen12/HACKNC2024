@@ -7,7 +7,7 @@ import Login from './routes/account/login'
 import Signup from './routes/account/signup'
 import Courses, { courseLoader } from './routes/courses/course'
 import Profile, { profileLoader } from './routes/profile/profile'
-import EditProfile, { editProfileLoader } from './routes/profile/editpro'
+import EditProfile, { editProfileLoader } from './routes/profile/editProfile'
 import CoursePage, { coursePageLoader } from './routes/courses/courseStudents'
 
 const router = createBrowserRouter([
@@ -48,6 +48,7 @@ const router = createBrowserRouter([
     element: (<EditProfile />),
     loader: editProfileLoader
   }
+
 ])
 
 createRoot(document.getElementById('root')).render(
