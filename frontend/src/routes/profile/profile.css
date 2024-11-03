@@ -16,8 +16,40 @@
     background-color: lightblue;
 }
 /* can also use for a back button or the other buttons on the screen to navigate back to course search from editprofile*/
-
 /* maybe make it a darker color (than azure) when you hover? */
+
+
+
+/*SECTION FOR CREATING A PROFILE*/
+
+.createcard {
+    background-color: rgb(238, 238, 217);
+    border-radius: 15px;
+    box-shadow: 2px 1px 10px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    height: 500px;
+    width: 400px;
+    text-align: center;
+}
+/* reuse courselist and addtolist for this section as well */
+
+input[type="text"] {
+    padding: 8px 12px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #0056b3;
+}
+/* section for textboxes reacting when you click on them */
+
+/*SECTION FOR EDITING PROFILE*/
 
 .profilecard {
     background-color: beige;
@@ -29,7 +61,7 @@
     text-align: center;
 }
 
-/*formatting for the profile card*/
+/*formatting for the edit profile card*/
 
 .courselist {
     display: flex;
@@ -51,6 +83,11 @@
     white-space: nowrap;
     list-style-type: none;
     cursor: pointer;
+    transition: background-color 0.2s
+}
+
+.courselist li:hover{
+    background-color: #758fac;
 }
 
 /* things to make the list a row, along with making list components pill shapred*/
@@ -61,12 +98,17 @@
     border: 2px dotted #000000;
     border-radius: 50px;
     margin: 10px;
-    display: flex;
+    display: inline-block; /*not sure how to include it at the end of the list */
     color: #000000;
     font-weight: bold;
     font-size: 15px;
     text-align: center;
     cursor: pointer;
+    transition: background-color 0.2s;
+    max-width: 100px;
+}
+.addtolist:hover{
+    background-color: rgb(188, 188, 167);
 }
 /* pill shape for at the end of the list when you want to suggest if you want to add anything or not.
 /* click on an item to remove it from the list ig */
