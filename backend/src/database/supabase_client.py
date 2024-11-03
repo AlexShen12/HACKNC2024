@@ -3,9 +3,9 @@
 # external
 from supabase import create_client, Client
 
-import User_Login
-
 # internal
+from .types import UpdateProfileInput
+
 
 class SupabaseClient():
     supabase_client: Client
@@ -102,4 +102,43 @@ class SupabaseClient():
         
         except Exception as e:
             return {"error": str(e)}
+    
+
+    def update_student_profile(self, input: UpdateProfileInput):
+        try:
+            user: str = self.supabase_client.auth.get_user().user.id
+
+            response = (
+                self.supabase_client.table("students")
+                .update({
+                    "name": input.name,
+                    "username": input.username,
+                })
+                .eq("user_id", user)
+                .execute()
+            )
+
+            removedCourses = input.removedCourses
+
+            response = (
+                self.supabase_client.table("student_courses")
+                .delete()
+                .eq("student_id", user)
+                .in_("course_id", removedCourses)
+                .execute()
+            )
+
+            for course in input.addedCourses:
+                response = (
+                    self.supabase_client.table("student_courses")
+                    .insert({
+                        "student_id": user,
+                        "course_id": course
+                    })
+                    .execute()
+                )
+
+            return response
         
+        except Exception as e:
+            return {"error": str(e)}

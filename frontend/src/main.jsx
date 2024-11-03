@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import Login from './routes/account/login'
@@ -22,7 +22,10 @@ const router = createBrowserRouter([
   },
   {
     path: "signup",
-    element: (<Signup />)
+    element: (<Signup />),
+    action: async ({request}) => {
+      return redirect("/login")
+    }
   },
   {
     path: "login",

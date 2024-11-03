@@ -5,10 +5,6 @@ from pydantic import BaseModel
 
 # internal
 
-class LoginInput(BaseModel):
-    email: str
-    password: str
-
-class SignupInput(BaseModel):
+class AccountInput(BaseModel):
     email: str
     password: str
