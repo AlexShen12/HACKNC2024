@@ -5,7 +5,7 @@ import { CourseData, ProfileData } from '../../types/types';
 // TODO: get profile data from api call
 async function getProfileData(id: number): Promise<ProfileData> {
     const data: ProfileData = {
-        name: "test",
+        name: "Alex",
         courses: [
             {
                 courseNumber: "101",
@@ -15,8 +15,8 @@ async function getProfileData(id: number): Promise<ProfileData> {
                 courseNumber: "102",
                 courseName: "test course 2"
             }],
-        email: "test@unc.edu",
-        isUser: false
+        email: "alex@unc.edu",
+        isUser: true
     }
     return await data;
 }

@@ -23,7 +23,7 @@ export async function editProfileLoader({params} : {params: {id: number}}): Prom
             }
         ],
         profileData: {
-            name: "test",
+            name: "alex",
             courses: [
                 {
                     courseNumber: "101",
@@ -33,7 +33,7 @@ export async function editProfileLoader({params} : {params: {id: number}}): Prom
                     courseNumber: "102",
                     courseName: "test course 2"
                 }],
-            email: "test@unc.edu",
+            email: "alex@unc.edu",
             isUser: true
         }
     }
@@ -59,7 +59,7 @@ export default function EditProfile() {
                 <div>
                     <Search courses={data.allCourses} initialCourses={data.profileData.courses}/>
                 </div>
-                <button type='submit'> Login </button>
+                <button type='submit'> Finish </button>
             </form>
         </div>
     );

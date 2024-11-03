@@ -41,6 +41,7 @@ input[type="text"]:focus {
     text-align: left;
     position: relative;
     top:-32px;
+    color: #000000;
 }
 
 /*formatting for the edit profile card*/
