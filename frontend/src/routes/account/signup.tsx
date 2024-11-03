@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import 'axios';
-import axios from 'axios';
+import { AxiosClient } from '../../requests/axiosClient';
 import { redirect, useNavigate } from 'react-router-dom';
 
 export default function Signup() {
@@ -12,22 +11,19 @@ export default function Signup() {
 
     function handleSubmit(event: React.FormEvent) {
         event.preventDefault();
-        const instance = axios.create({
-            baseURL: 'http://127.0.0.1:8000',
-            timeout: 10000,
-        })
+        const instance = AxiosClient.getInstance();
 
         const data = {
             email: email,
             password: password
         }
 
-        instance.post('/accounts/signup', data)
-            .then(response => {
+        instance.post('/accounts/signup', data,
+            response => {
                 console.log(response.data);
                 navigate('/'); // Redirect to success page
-            })
-            .catch(error => {
+            },
+            error => {
                 console.error('There was an error!', error);
                 navigate('/signup');
             });
