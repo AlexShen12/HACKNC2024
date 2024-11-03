@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AxiosClient } from '../../requests/axiosClient';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
 
@@ -21,12 +21,13 @@ export default function Signup() {
         instance.post('/accounts/signup', data,
             response => {
                 console.log(response.data);
-                navigate('/'); // Redirect to success page
+                navigate('/');
             },
             error => {
                 console.error('There was an error!', error);
                 navigate('/signup');
-            });
+            }
+        );
     }
 
     return (
