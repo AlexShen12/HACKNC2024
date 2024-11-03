@@ -15,7 +15,8 @@ async function getProfileData(id: number): Promise<ProfileData> {
                 courseNumber: "102",
                 courseName: "test course 2"
             }],
-        email: "test@unc.edu"
+        email: "test@unc.edu",
+        isUser: false
     }
     return await data;
 }
@@ -46,11 +47,16 @@ export default function Profile() {
                 <p>Email: {email}</p>
 
             </div>
-            <div>
-                <Link to={"./edit"}>
-                    <p>Edit Information</p>
-                </Link>
-            </div>
+            <p>Contact Info:</p>
+            <p>Email: {email}</p>
+            
+            {data.isUser && (
+                <div>
+                    <Link to={"./edit"}>
+                        <p>Edit Information</p>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 
