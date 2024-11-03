@@ -14,25 +14,92 @@ class SupabaseClient():
         self.supabase_client = create_client(project_url, api_key)
 
     def signup(self, email: str, password: str):
-        response = self.supabase_client.auth.sign_up({
-            "email": email,
-            "password": password
-        })
+        try:
+            response = self.supabase_client.auth.sign_up({
+                "email": email,
+                "password": password
+            })
 
-        return response
+            return response
+        
+        except Exception as e:
+            return {"error": str(e)}
 
     def login(self, email: str, password: str):
-        response = self.supabase_client.auth.sign_in_with_password({
-            "email": email, 
-            "password": password
-        })
+        try: 
+            response = self.supabase_client.auth.sign_in_with_password({
+                "email": email, 
+                "password": password
+            })
 
-        return response
+            return response
+        
+        except Exception as e:
+            return {"error": str(e)}
     
     def logout(self):
-        response = self.supabase_client.auth.sign_out()
-        return response
+        try:
+            response = self.supabase_client.auth.sign_out()
+            return response
+        
+        except Exception as e:
+            return {"error": str(e)}
+        
     
     def is_authenticated(self):
-        response = self.supabase_client.auth.get_session()
-        return response
+        try:
+            response = self.supabase_client.auth.get_session()
+            return response
+        except Exception as e:
+            return {"error": str(e)}
+        
+
+    def fetch_all_courses(self) -> list[dict]:
+        try:
+            response = self.supabase_client.table("courses").select("number, name").execute()
+
+            return response.data
+        
+        except Exception as e:
+            return {"error": str(e)}
+        
+    def fetch_student_profile(self, username: str) -> list[dict]:
+        try:
+            response = (
+                self.supabase_client.table("students")
+                .select("*")
+                .eq("username", username)
+                .execute()
+            )
+
+            data = response.data
+
+            assert(len(data) == 1)
+
+            response = (
+                self.supabase_client.table("courses")
+                .select("id, number, name, student_courses(course_id, student_id)")
+                .eq("student_id", username)
+                .execute()
+            )
+
+            courses: list[dict] = []
+
+            for course in response.data:
+                courseData = {
+                    "number": course.get("number"),
+                    "name": course.get("name"),
+                }
+                courses.append(courseData)
+
+            profile: dict = {
+                "name": data[0]["name"],
+                "username": data[0]["username"],
+                "courses": courses
+            }
+
+            return profile
+        
+        except Exception as e:
+            return {"error": str(e)}
+        
